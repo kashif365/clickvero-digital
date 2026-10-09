@@ -1,0 +1,158 @@
+/* ==========================================================================
+   Design Tokens — Agency Digital Marketings custom design system
+   --------------------------------------------------------------------------
+   Single source of truth for the redesigned frontend. Loaded after
+   bootstrap.min.css / main.css so these values are the ones authored
+   against in agency.css. Brand colors are unchanged from the original
+   theme (main.css) by requirement — everything else here is new.
+
+   Responsive design is validated at: 320, 375, 768, 1024, 1440 and
+   1600px+. Bootstrap's own grid breakpoints (576/768/992/1200/1400)
+   remain in effect for column layout; the custom breakpoints below are
+   used only where the visual system needs finer control than the grid
+   (hero composition, type scale, section rhythm).
+   ========================================================================== */
+
+:root {
+  /* Force light form-control rendering (native select/option popups,
+     scrollbars, etc.) regardless of the visitor's OS dark-mode setting —
+     without this, browsers render <select> dropdown popups using a dark
+     OS theme even though the page itself is light, making option text
+     unreadable. */
+  color-scheme: light;
+
+  /* ---- Brand colors (REQUIRED — do not change) -------------------------- */
+  --color-primary: #061352;
+  --color-primary-dark: #030a2b;
+  --color-primary-light: #0b1d75;
+  --color-primary-rgb: 6, 19, 82;
+
+  /* ---- Extended brand ramp (derived, for gradients/tints/washes) -------- */
+  --adm-primary-50: #eef0f8;
+  --adm-primary-100: #d7dbf0;
+  --adm-primary-200: #aeb6e0;
+  --adm-primary-700: var(--color-primary-light);
+  --adm-primary-900: var(--color-primary);
+  --adm-primary-950: var(--color-primary-dark);
+
+  /* Accent used sparingly for highlights, tags, focus rings on dark surfaces */
+  --adm-accent: #ffbc0b;
+  --adm-accent-rgb: 255, 188, 11;
+
+  /* ---- Neutrals ----------------------------------------------------------- */
+  --adm-ink: #0d1224;          /* body copy on light surfaces */
+  --adm-ink-soft: #4a4f66;     /* secondary/muted text */
+  --adm-ink-faint: #8087a1;    /* tertiary text, captions */
+  --adm-paper: #ffffff;
+  --adm-paper-alt: #f6f7fb;    /* section background alternation */
+  --adm-paper-tint: #eef0f8;   /* soft brand-tinted section background */
+  --adm-line: #e2e4ee;         /* hairline borders */
+  --adm-line-strong: #c7cadf;
+
+  /* ---- Surfaces on dark navy sections ------------------------------------ */
+  --adm-on-dark: #f5f6fb;
+  --adm-on-dark-soft: rgba(245, 246, 251, 0.72);
+  --adm-on-dark-faint: rgba(245, 246, 251, 0.48);
+  --adm-on-dark-line: rgba(245, 246, 251, 0.16);
+
+  /* ---- Feedback colors (forms/alerts) ------------------------------------ */
+  --adm-success: #1a7f37;
+  --adm-success-bg: #eaf6ee;
+  --adm-danger: #dc2626;
+  --adm-danger-bg: #fdecec;
+
+  /* ---- Typography ---------------------------------------------------------
+     Headings: Plus Jakarta Sans (loaded via Google Fonts in head.blade.php).
+     Body/nav/forms/buttons: Inter. Both fall back to a system stack so text
+     stays visible and correctly sized before/if the webfont loads. */
+  --adm-font-display: "Plus Jakarta Sans", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --adm-font-body: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Fluid editorial type scale — clamp(min, viewport-relative, max) */
+  --adm-text-xs: 0.8125rem;                              /* 13px */
+  --adm-text-sm: 0.9375rem;                              /* 15px */
+  --adm-text-base: 1.0625rem;                             /* 17px */
+  --adm-text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+  --adm-text-xl: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+  --adm-h4: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  --adm-h3: clamp(1.875rem, 1.55rem + 1.5vw, 2.75rem);
+  --adm-h2: clamp(2.25rem, 1.75rem + 2.3vw, 3.5rem);
+  --adm-h1: clamp(2.75rem, 1.9rem + 3.8vw, 5rem);
+  --adm-display: clamp(2.5rem, 1.85rem + 3vw, 4.5rem);
+
+  --adm-lh-tight: 1.08;
+  --adm-lh-snug: 1.25;
+  --adm-lh-normal: 1.5;
+  --adm-lh-relaxed: 1.7;
+
+  --adm-tracking-tight: -0.02em;
+  --adm-tracking-normal: 0;
+  --adm-tracking-wide: 0.08em;
+
+  /* ---- Spacing scale (8px base) ------------------------------------------ */
+  --adm-space-1: 0.25rem;   /* 4  */
+  --adm-space-2: 0.5rem;    /* 8  */
+  --adm-space-3: 0.75rem;   /* 12 */
+  --adm-space-4: 1rem;      /* 16 */
+  --adm-space-5: 1.5rem;    /* 24 */
+  --adm-space-6: 2rem;      /* 32 */
+  --adm-space-7: 3rem;      /* 48 */
+  --adm-space-8: 4rem;      /* 64 */
+  --adm-space-9: 6rem;      /* 96 */
+  --adm-space-10: 8rem;     /* 128 */
+
+  /* Section rhythm — deliberately NOT identical across sections; each
+     section picks a token by weight/purpose so pacing varies. */
+  --adm-section-tight: clamp(3rem, 2.5rem + 2vw, 5rem);
+  --adm-section: clamp(4.5rem, 3.5rem + 4vw, 8rem);
+  --adm-section-loose: clamp(6rem, 4.5rem + 6vw, 11rem);
+
+  /* ---- Radius -------------------------------------------------------------
+     Restrained: sharp/near-sharp by default, one soft radius for media,
+     one pill for tags/badges. No "everything is a rounded card". */
+  --adm-radius-xs: 4px;
+  --adm-radius-sm: 6px;
+  --adm-radius-md: 10px;
+  --adm-radius-lg: 18px;
+  --adm-radius-pill: 999px;
+
+  /* ---- Shadows — soft, low-contrast, single light source ----------------- */
+  --adm-shadow-xs: 0 1px 2px rgba(3, 10, 43, 0.06);
+  --adm-shadow-sm: 0 4px 12px rgba(3, 10, 43, 0.07);
+  --adm-shadow-md: 0 12px 32px rgba(3, 10, 43, 0.10);
+  --adm-shadow-lg: 0 24px 64px rgba(3, 10, 43, 0.16);
+  --adm-shadow-ring: 0 0 0 3px rgba(var(--color-primary-rgb), 0.18);
+
+  /* ---- Borders -------------------------------------------------------------*/
+  --adm-border: 1px solid var(--adm-line);
+  --adm-border-strong: 1px solid var(--adm-line-strong);
+  --adm-border-on-dark: 1px solid var(--adm-on-dark-line);
+
+  /* ---- Containers ---------------------------------------------------------
+     Reference widths; actual layout still uses Bootstrap's .container /
+     .container-1330 / .container-fluid classes already in the markup. */
+  --adm-container-max: 1330px;
+  --adm-container-narrow: 900px;
+  --adm-container-prose: 720px;
+
+  /* ---- Motion ---------------------------------------------------------------
+     Restrained: short durations, standard easing, no bounce/elastic. */
+  --adm-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --adm-duration-fast: 150ms;
+  --adm-duration-base: 250ms;
+  --adm-duration-slow: 450ms;
+
+  /* ---- Z-index scale -------------------------------------------------------*/
+  --adm-z-header: 100;
+  --adm-z-overlay: 200;
+  --adm-z-popover: 300;
+}
+
+/* Reduced motion: respect user preference across the new component layer */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --adm-duration-fast: 0ms;
+    --adm-duration-base: 0ms;
+    --adm-duration-slow: 0ms;
+  }
+}

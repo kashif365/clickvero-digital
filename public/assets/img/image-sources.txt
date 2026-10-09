@@ -1,0 +1,76 @@
+Image sources and licenses
+===========================
+All images below are royalty-free and were downloaded directly from the
+source CDN (no hotlinking). Stored locally under public/assets/img/.
+Both a .jpg (fallback) and a .webp (primary, served via <picture>) are kept.
+
+hero/hero-team-strategy-meeting.(jpg|webp)
+  Source: Pexels, photo ID 7652049
+  URL: https://www.pexels.com/photo/a-group-of-people-having-a-meeting-in-the-office-7652049/
+  License: Pexels License (free for commercial use, no attribution required)
+
+hero/hero-marketing-discussion.(jpg|webp)
+  Source: Pexels, photo ID 7710150
+  URL: https://www.pexels.com/photo/group-of-people-discussing-7710150/
+  License: Pexels License (free for commercial use, no attribution required)
+
+hero/hero-campaign-success.(jpg|webp)
+  Source: Pexels, photo ID 7988237
+  URL: https://www.pexels.com/photo/people-having-a-business-meeting-in-the-office-7988237/
+  License: Pexels License (free for commercial use, no attribution required)
+
+hero/hero-seo-analytics-dashboard.(jpg|webp)
+  Source: Unsplash, photographer "1981 Digital"
+  URL: https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-data-on-it-bf9sZBcGQl4
+  License: Unsplash License (free for commercial use, no attribution required)
+
+about/about-team-collaboration.(jpg|webp)
+  Source: Pexels, photo ID 6476191
+  URL: https://www.pexels.com/photo/a-group-of-people-standing-near-a-computer-on-the-table-6476191/
+  License: Pexels License (free for commercial use, no attribution required)
+
+site/choose-brand-strategy-session.(jpg|webp)
+  Source: Unsplash, photographer Vitaly Gariev (@silverkblack)
+  URL: https://unsplash.com/photos/team-brainstorming-with-colorful-sticky-notes-on-glass-euNzbqwIIUI
+  License: Unsplash License (free for commercial use, no attribution required)
+
+portfolio/portfolio-seo-analytics-campaign.(jpg|webp)
+  Source: Unsplash, photographer "1981 Digital"
+  URL: https://unsplash.com/photos/a-computer-screen-with-a-bar-chart-on-it-yqaskj8lQBE
+  License: Unsplash License (free for commercial use, no attribution required)
+
+portfolio/portfolio-social-media-campaign.(jpg|webp)
+  Source: Unsplash, photographer Swello (@getswello)
+  URL: https://unsplash.com/photos/hands-holding-phone-displaying-social-media-feed-7ljc7nkjNcc
+  License: Unsplash License (free for commercial use, no attribution required)
+
+portfolio/portfolio-content-marketing.(jpg|webp)
+  Source: Unsplash, photographer Szabo Viktor (@vmxhu)
+  URL: https://unsplash.com/photos/a-phone-displays-a-social-media-profile-9VPIy0a-OxE
+  License: Unsplash License (free for commercial use, no attribution required)
+
+portfolio/portfolio-web-development.(jpg|webp)
+  Source: Pexels, photo ID 574077
+  URL: https://www.pexels.com/photo/code-coding-computer-data-574077/
+  License: Pexels License (free for commercial use, no attribution required)
+
+portfolio/portfolio-growth-story.(jpg|webp)
+  Source: Pexels, photo ID 7793999
+  URL: https://www.pexels.com/photo/people-celebrating-at-the-office-7793999/
+  License: Pexels License (free for commercial use, no attribution required)
+
+portfolio/portfolio-email-marketing-analytics.(jpg|webp)
+  Source: Unsplash, photographer Swello (@getswello)
+  URL: https://unsplash.com/photos/person-using-smartphone-to-view-social-media-analytics-4lKFi3KqnD8
+  License: Unsplash License (free for commercial use, no attribution required)
+
+Note: two candidate Unsplash images (a Getty-Images-credited "creative team
+working in office" photo and a Getty-Images-credited "high five" photo) were
+found during sourcing but were hosted on plus.unsplash.com, i.e. the PAID
+Unsplash+ tier, not the free Unsplash License. They were rejected and not
+used anywhere on the site.
+
+NOT yet replaced (existing theme images retained, see "remaining issues"
+in the final summary): team member headshots (8x on /team, 1x on
+/team-details), testimonial avatar, project.blade.php's 9 static grid
+photos (project-inner-1-*.jpg), project-details.blade.php's demo photos.
