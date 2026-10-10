@@ -1,7 +1,7 @@
 import ContactSection from '../components/sections/ContactSection';
 import FaqSection from '../components/sections/FaqSection';
 import PageHero from '../components/sections/PageHero';
-import { faqGroups, images } from '../content/site';
+import { images, pricingFaqs } from '../content/site';
 
 export default function Contact() {
     return (
@@ -15,7 +15,7 @@ export default function Contact() {
                 breadcrumbs={[{ label: 'Contact' }]}
             />
             <ContactSection />
-            <FaqSection items={faqGroups[2].items} title="Before you" accent="get in touch" text="A few practical answers about pricing and getting started." />
+            <FaqSection items={pricingFaqs} title="Before you" accent="get in touch" text="A few practical answers about pricing and getting started." />
         </>
     );
 }

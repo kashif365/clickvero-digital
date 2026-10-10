@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { processSteps } from '../../content/site';
+import { home, processSteps } from '../../content/site';
 import Accordion from '../ui/Accordion';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -14,11 +14,7 @@ export default function ProcessPanels() {
     return (
         <section className="relative overflow-hidden py-10 lg:py-20">
             <div className="container-site">
-                <SectionHeading
-                    title="How we take you"
-                    accent="from plan to growth"
-                    text="A repeatable process is what separates consistent growth from lucky months. Ours runs in four stages."
-                />
+                <SectionHeading title={home.process.title} accent={home.process.accent} text={home.process.text} />
 
                 <div className="hidden h-[560px] w-full gap-2 overflow-hidden rounded-lg md:flex">
                     {processSteps.map((step, index) => {

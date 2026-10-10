@@ -1,7 +1,7 @@
 import Button from '../ui/Button';
 import Reveal from '../ui/Reveal';
 
-/** Large rounded banner: copy and a call-to-action on the left, a framed image on the right. */
+/** Large rounded banner: copy and a call-to-action on the left, a framed image on the right. `text` is a string or an array of paragraphs. */
 export default function FeatureBanner({ heading, title, accent, text, image, imageAlt, cta }) {
     return (
         <section className="py-10 md:py-20">
@@ -14,7 +14,13 @@ export default function FeatureBanner({ heading, title, accent, text, image, ima
                         <h3 className="mb-6 text-2xl font-bold leading-tight text-white md:text-3xl lg:text-4xl">
                             {title} {accent && <span className="text-brand">{accent}</span>}
                         </h3>
-                        <p className="mb-8 max-w-2xl leading-relaxed text-white">{text}</p>
+                        <div className="mb-8 max-w-2xl space-y-4">
+                            {[text].flat().map((paragraph, index) => (
+                                <p key={paragraph} className={`leading-relaxed ${index === 0 ? 'text-white' : 'text-white/75'}`}>
+                                    {paragraph}
+                                </p>
+                            ))}
+                        </div>
                         {cta && (
                             <div>
                                 <Button to={cta.to}>{cta.label}</Button>

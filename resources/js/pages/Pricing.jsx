@@ -6,7 +6,7 @@ import PageHero from '../components/sections/PageHero';
 import Button from '../components/ui/Button';
 import Reveal from '../components/ui/Reveal';
 import SectionHeading from '../components/ui/SectionHeading';
-import { faqGroups, images, pricing } from '../content/site';
+import { images, pricing, pricingFaqs } from '../content/site';
 
 export default function Pricing() {
     const [period, setPeriod] = useState(pricing.periods[0].key);
@@ -88,7 +88,7 @@ export default function Pricing() {
                 </div>
             </section>
 
-            <FaqSection items={faqGroups[2].items} title="Pricing" accent="questions" text="The practical details of working with us." />
+            <FaqSection items={pricingFaqs} title="Pricing" accent="questions" text="The practical details of working with us." />
             <ContactSection />
         </>
     );
