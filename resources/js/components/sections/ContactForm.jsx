@@ -4,7 +4,7 @@ import { api } from '../../lib/api';
 import { useSite } from '../../lib/site';
 import Button from '../ui/Button';
 
-const EMPTY = { name: '', email: '', subject: '', message: '' };
+const EMPTY = { name: '', email: '', phone: '', subject: '', message: '' };
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const FIELD =
@@ -22,6 +22,9 @@ function validate(values) {
         errors.email = 'Please enter your email address.';
     } else if (!EMAIL_PATTERN.test(values.email.trim())) {
         errors.email = 'Please enter a valid email address.';
+    }
+    if (!values.phone.trim()){
+        errors.phone = 'Please enter your phone number'
     }
 
     if (!values.message.trim()) {
@@ -93,6 +96,7 @@ export default function ContactForm({ defaultSubject = '', submitLabel = 'Send M
             const response = await api.createQuote({
                 name: values.name.trim(),
                 email: values.email.trim(),
+                phone: values.phone.trim(),
                 subject: values.subject || null,
                 message: values.message.trim(),
             });
@@ -115,6 +119,10 @@ export default function ContactForm({ defaultSubject = '', submitLabel = 'Send M
                 </Field>
                 <Field id={id('email')} label="Your Email" error={errors.email} required>
                     <input type="email" autoComplete="email" maxLength={255} placeholder="jane@company.com" className={FIELD} {...bind('email')} />
+                </Field>
+                <Field id={id('phone')} label="Phone Number" error={errors.phone} required>
+                    <input type="tel" placeholder="(123) 456-7890" className={FIELD} {...bind('phone')} />
+
                 </Field>
             </div>
 

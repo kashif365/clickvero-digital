@@ -13,6 +13,10 @@
             <div>{{ $quote->email }}</div>
         </div>
         <div class="admin-form-group">
+            <label>Phone No</label>
+            <div>{{ $quote->phone }}</div>
+        </div>
+        <div class="admin-form-group">
             <label>Subject</label>
             <div>{{ $quote->subject ?: '—' }}</div>
         </div>

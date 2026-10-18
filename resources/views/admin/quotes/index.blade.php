@@ -10,6 +10,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Phone No</th>
                         <th>Subject</th>
                         <th>Received</th>
                         <th></th>
@@ -20,6 +21,7 @@
                         <tr>
                             <td>{{ $quote->name }}</td>
                             <td>{{ $quote->email }}</td>
+                            <td>{{ $quote->phone }}</td>
                             <td>{{ $quote->subject ?: '—' }}</td>
                             <td>{{ $quote->created_at->format('d M, Y H:i') }}</td>
                             <td style="white-space:nowrap;">
