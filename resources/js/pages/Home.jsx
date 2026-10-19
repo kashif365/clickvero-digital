@@ -8,16 +8,16 @@ import LatestBlogs from '../components/sections/LatestBlogs';
 import Outcomes from '../components/sections/Outcomes';
 import PageHero from '../components/sections/PageHero';
 import ProcessPanels from '../components/sections/ProcessPanels';
-import ProjectsGrid from '../components/sections/ProjectsGrid';
 import ProseSplit from '../components/sections/ProseSplit';
 import ServiceMarquee from '../components/sections/ServiceMarquee';
 import ServicesShowcase from '../components/sections/ServicesShowcase';
 import Testimonials from '../components/sections/Testimonials';
 import ToolStack from '../components/sections/ToolStack';
 import WhyChoose from '../components/sections/WhyChoose';
-import Button from '../components/ui/Button';
+import WorkGallery from '../components/sections/WorkGallery';
 import Icon from '../components/ui/Icon';
-import { home, homeFaqs, images, projects } from '../content/site';
+import SectionHeading from '../components/ui/SectionHeading';
+import { home, homeFaqs, images } from '../content/site';
 import { useSite } from '../lib/site';
 
 const PANEL = 'rounded-[30px] border border-white/10 bg-[#111111] p-6 md:p-8';
@@ -138,16 +138,12 @@ export default function Home() {
 
             <section className="py-10 md:py-20">
                 <div className="container-site">
-                    <div className="mb-8 grid grid-cols-1 items-center gap-6 md:mb-16 lg:grid-cols-2 lg:gap-16">
-                        <h2 className="text-2xl font-bold leading-tight md:text-3xl lg:text-4xl">
-                            Growth <span className="text-brand">Playbooks</span>
-                        </h2>
-                        <p className="leading-relaxed text-muted-foreground">How we approach the situations growing businesses bring to us most often — the problem, the plan, and how success is measured.</p>
-                    </div>
-                    <ProjectsGrid items={projects.slice(0, 4)} />
-                    <div className="mt-10 flex justify-center">
-                        <Button to="/project">See All Playbooks</Button>
-                    </div>
+                    <SectionHeading
+                        title="Our Recent"
+                        accent="Work"
+                        text="Websites, online stores, brand identities, and mobile apps we've built for growing businesses. Open any project to see the full design."
+                    />
+                    <WorkGallery pageSize={6} moreTo="/project" />
                 </div>
             </section>
 

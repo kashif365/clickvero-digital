@@ -14,7 +14,13 @@
         </div>
         <div class="admin-form-group">
             <label>Phone No</label>
-            <div>{{ $quote->phone }}</div>
+            <div>
+                @if ($quote->phone)
+                    <a href="tel:+1{{ preg_replace('/\D/', '', $quote->phone) }}">{{ $quote->phone }}</a>
+                @else
+                    —
+                @endif
+            </div>
         </div>
         <div class="admin-form-group">
             <label>Subject</label>

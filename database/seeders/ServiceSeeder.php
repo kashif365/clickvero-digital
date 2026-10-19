@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 
+/**
+ * Core service pages. The SEO and Social Media Marketing pages (plus Local SEO
+ * and Search Engine Marketing) live in ServicePageContentSeeder.
+ */
 class ServiceSeeder extends Seeder
 {
     public function run(): void
@@ -20,110 +24,6 @@ class ServiceSeeder extends Seeder
     private function services(): array
     {
         return [
-            [
-                'slug' => 'seo-services',
-                'name' => 'SEO Services',
-                'short_description' => 'Rank higher, earn qualified organic traffic, and turn search visibility into predictable revenue with our data-driven SEO services.',
-                'seo_title' => 'SEO Services | Search Engine Optimization Agency',
-                'seo_description' => 'Grow your organic traffic with our SEO services — technical SEO, on-page optimization, content strategy, and link building for businesses worldwide.',
-                'keywords' => 'SEO services, search engine optimization, digital marketing agency, organic traffic, technical SEO, on-page SEO, link building',
-                'description' => <<<'HTML'
-                    <h2>Why SEO Matters for Your Business</h2>
-                    <p>Search engine optimization is the foundation of sustainable online growth. Unlike paid advertising, the traffic you earn through SEO keeps compounding over time, giving you a channel that gets more efficient the longer you invest in it. As a full-service digital marketing agency, we build SEO programs around your actual business goals, not vanity rankings.</p>
-
-                    <h2>Benefits of Our SEO Services</h2>
-                    <ul>
-                        <li><strong>Higher organic visibility</strong> — rank for the keywords your customers are actually searching for.</li>
-                        <li><strong>Lower customer acquisition cost</strong> — organic traffic doesn't stop when the ad budget does.</li>
-                        <li><strong>Stronger brand trust</strong> — top rankings signal authority and credibility to buyers.</li>
-                        <li><strong>Compounding returns</strong> — content and technical fixes keep paying off long after they ship.</li>
-                    </ul>
-
-                    <h2>What's Included</h2>
-                    <h3>Technical SEO</h3>
-                    <p>Site speed, crawlability, indexation, structured data, and Core Web Vitals — we fix the technical issues holding your site back from ranking.</p>
-                    <h3>On-Page Optimization</h3>
-                    <p>Keyword mapping, title tags, meta descriptions, internal linking, and content optimization aligned to search intent.</p>
-                    <h3>Content Strategy</h3>
-                    <p>Keyword research and content briefs built around topics your audience is actively searching for.</p>
-                    <h3>Authority Building</h3>
-                    <p>Ethical link building and digital PR to strengthen your site's authority in your industry.</p>
-
-                    <h2>Our SEO Process</h2>
-                    <h3>1. Audit &amp; Research</h3>
-                    <p>We start with a full technical and competitive audit to identify quick wins and long-term opportunities.</p>
-                    <h3>2. Strategy &amp; Roadmap</h3>
-                    <p>We build a prioritized roadmap covering technical fixes, content, and authority building.</p>
-                    <h3>3. Execution</h3>
-                    <p>Our team implements the roadmap — from code-level fixes to published content.</p>
-                    <h3>4. Reporting &amp; Iteration</h3>
-                    <p>Monthly reporting on rankings, traffic, and conversions, with the strategy refined as we learn what works.</p>
-
-                    <h2>Why Choose Us for SEO</h2>
-                    <p>We're a remote-first digital marketing agency, which means you get a dedicated SEO team without the overhead of a traditional agency. We focus on metrics that matter — organic revenue and qualified leads — not just rankings for their own sake.</p>
-
-                    <h2>Industry Use Cases</h2>
-                    <p>Our SEO services work across eCommerce, SaaS, professional services, and content publishers — anywhere search is a meaningful channel for new customers.</p>
-                    HTML,
-                'faqs' => [
-                    ['question' => 'How long does SEO take to show results?', 'answer' => 'Most clients see meaningful movement in rankings and traffic within 3 to 6 months, with compounding gains after that as content and authority build up.'],
-                    ['question' => 'Do you guarantee first-page rankings?', 'answer' => 'No ethical SEO agency can guarantee specific rankings, since search engines control their own algorithms. We focus on sustainable, white-hat strategies that deliver long-term organic growth.'],
-                    ['question' => 'Is SEO worth it for a new business?', 'answer' => 'Yes — starting SEO early means you build authority and rankings before competitors catch up, and the earlier you start, the sooner you benefit from compounding organic traffic.'],
-                    ['question' => 'Do you work with businesses outside the US?', 'answer' => 'Yes, we are a remote-first agency serving clients worldwide, with experience running SEO campaigns across multiple regions and languages.'],
-                ],
-            ],
-            [
-                'slug' => 'social-media-marketing',
-                'name' => 'Social Media Marketing',
-                'short_description' => 'Build an engaged audience and turn followers into customers with strategic, platform-native social media marketing.',
-                'seo_title' => 'Social Media Marketing Services | Grow Your Brand Online',
-                'seo_description' => 'Our social media marketing services help brands grow engaged audiences on Instagram, Facebook, LinkedIn, and X with strategy, content, and paid social.',
-                'keywords' => 'social media marketing, social media management, Instagram marketing, Facebook ads, LinkedIn marketing, content strategy',
-                'description' => <<<'HTML'
-                    <h2>Turn Social Media Into a Growth Channel</h2>
-                    <p>Social media marketing is about more than posting consistently — it's about building an audience that trusts your brand and converts into customers. We design social strategies tailored to each platform's audience and algorithm, not a one-size-fits-all content calendar.</p>
-
-                    <h2>Benefits of Social Media Marketing</h2>
-                    <ul>
-                        <li><strong>Direct audience connection</strong> — build a community that engages with your brand daily.</li>
-                        <li><strong>Increased brand awareness</strong> — reach new audiences through shares, discovery, and paid amplification.</li>
-                        <li><strong>Better customer insight</strong> — social listening reveals what your audience actually cares about.</li>
-                        <li><strong>Support for other channels</strong> — social proof strengthens SEO, PPC, and email performance.</li>
-                    </ul>
-
-                    <h2>What's Included</h2>
-                    <h3>Platform Strategy</h3>
-                    <p>A content and growth strategy tailored to Instagram, Facebook, LinkedIn, X, or TikTok — wherever your audience actually spends time.</p>
-                    <h3>Content Creation</h3>
-                    <p>Graphics, short-form video, and copy designed to perform on each specific platform.</p>
-                    <h3>Community Management</h3>
-                    <p>Timely responses to comments and messages that keep your audience engaged and protect your brand reputation.</p>
-                    <h3>Paid Social Campaigns</h3>
-                    <p>Targeted paid social to accelerate reach, drive traffic, and generate leads faster than organic alone.</p>
-
-                    <h2>Our Process</h2>
-                    <h3>1. Audience Research</h3>
-                    <p>We identify who your customers are, which platforms they use, and what content resonates with them.</p>
-                    <h3>2. Content Planning</h3>
-                    <p>A monthly content calendar aligned with your brand voice and campaign goals.</p>
-                    <h3>3. Publishing &amp; Engagement</h3>
-                    <p>Consistent publishing paired with active community management.</p>
-                    <h3>4. Analysis &amp; Optimization</h3>
-                    <p>We track engagement, follower growth, and conversions, adjusting the strategy every month.</p>
-
-                    <h2>Why Choose Us</h2>
-                    <p>We treat every platform differently instead of repurposing the same content everywhere. That platform-native approach is why our campaigns consistently outperform generic social calendars.</p>
-
-                    <h2>Industry Use Cases</h2>
-                    <p>We've run social media marketing for eCommerce brands, B2B SaaS companies, local service businesses, and personal brands — each with a strategy built around their specific audience.</p>
-                    HTML,
-                'faqs' => [
-                    ['question' => 'Which social platforms should my business be on?', 'answer' => 'It depends on where your audience spends time. B2B brands often see the best results on LinkedIn, while consumer brands typically perform best on Instagram, Facebook, or TikTok. We help you decide during onboarding.'],
-                    ['question' => 'Do you create the content or do we?', 'answer' => "We handle strategy, content creation, and publishing end-to-end, though we're happy to incorporate content you already have."],
-                    ['question' => 'How do you measure social media success?', 'answer' => 'We track engagement rate, follower growth, click-throughs, and — most importantly — conversions and leads generated from social channels.'],
-                    ['question' => 'Do you run paid social ads too?', 'answer' => 'Yes, we manage paid social campaigns alongside organic content to accelerate reach and results.'],
-                ],
-            ],
             [
                 'slug' => 'pay-per-click-advertising',
                 'name' => 'Pay-Per-Click (PPC) Advertising',

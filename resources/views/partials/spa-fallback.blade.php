@@ -19,7 +19,7 @@
 
       <main>
          @isset($service)
-            <h1>{{ $service->name }}</h1>
+            <h1>{{ $service->headline ?: $service->name }}</h1>
             @if ($service->short_description)
                <p>{{ $service->short_description }}</p>
             @endif

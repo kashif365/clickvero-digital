@@ -3,19 +3,28 @@
     "file": "assets/Button-C2_JiPzU.js",
     "name": "Button"
   },
-  "_ContactSection-DcsmkawI.js": {
-    "file": "assets/ContactSection-DcsmkawI.js",
+  "_ContactSection-BvST-n1T.js": {
+    "file": "assets/ContactSection-BvST-n1T.js",
     "name": "ContactSection",
     "imports": [
       "_Button-C2_JiPzU.js"
     ]
   },
-  "_Reasons-B8qRLAoV.js": {
-    "file": "assets/Reasons-B8qRLAoV.js",
+  "_ProjectsGrid-duo4WvdQ.js": {
+    "file": "assets/ProjectsGrid-duo4WvdQ.js",
+    "name": "ProjectsGrid",
+    "imports": [
+      "_Button-C2_JiPzU.js",
+      "_ContactSection-BvST-n1T.js",
+      "_Reveal-CUJEEjKy.js"
+    ]
+  },
+  "_Reasons-mz4Pj8EY.js": {
+    "file": "assets/Reasons-mz4Pj8EY.js",
     "name": "Reasons",
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_Reveal-CUJEEjKy.js",
       "resources/js/main.jsx"
     ]
@@ -42,7 +51,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-BGBQznIU.css",
+    "file": "assets/app-CsyxvhLd.css",
     "name": "app",
     "names": [
       "app.css"
@@ -51,13 +60,13 @@
     "isEntry": true
   },
   "resources/js/main.jsx": {
-    "file": "assets/main-D19QPoAQ.js",
+    "file": "assets/main-BmqRsul3.js",
     "name": "main",
     "src": "resources/js/main.jsx",
     "isEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_arrow-up-right-CdnQC2Un.js",
       "_States-B2L9Djto.js",
       "_Reveal-CUJEEjKy.js"
@@ -78,62 +87,62 @@
     ]
   },
   "resources/js/pages/About.jsx": {
-    "file": "assets/About-Bv7IsYyb.js",
+    "file": "assets/About-K5oDquiT.js",
     "name": "About",
     "src": "resources/js/pages/About.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_Reveal-CUJEEjKy.js",
       "resources/js/main.jsx",
-      "_Reasons-B8qRLAoV.js"
+      "_Reasons-mz4Pj8EY.js"
     ]
   },
   "resources/js/pages/Blog.jsx": {
-    "file": "assets/Blog-B7pyQI76.js",
+    "file": "assets/Blog-DnDVJxvs.js",
     "name": "Blog",
     "src": "resources/js/pages/Blog.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_States-B2L9Djto.js",
       "resources/js/main.jsx"
     ]
   },
   "resources/js/pages/BlogDetail.jsx": {
-    "file": "assets/BlogDetail-rlcNyXEH.js",
+    "file": "assets/BlogDetail-Dv583xVj.js",
     "name": "BlogDetail",
     "src": "resources/js/pages/BlogDetail.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_States-B2L9Djto.js",
       "resources/js/main.jsx",
       "resources/js/pages/NotFound.jsx"
     ]
   },
   "resources/js/pages/Contact.jsx": {
-    "file": "assets/Contact-BKxUb8tI.js",
+    "file": "assets/Contact-CBPefSAh.js",
     "name": "Contact",
     "src": "resources/js/pages/Contact.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "resources/js/main.jsx"
     ]
   },
   "resources/js/pages/Faq.jsx": {
-    "file": "assets/Faq-DDuGMKkD.js",
+    "file": "assets/Faq-Cxd9k96L.js",
     "name": "Faq",
     "src": "resources/js/pages/Faq.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_Reveal-CUJEEjKy.js",
       "resources/js/main.jsx"
     ]
@@ -148,76 +157,78 @@
     ]
   },
   "resources/js/pages/Portfolio.jsx": {
-    "file": "assets/Portfolio-wBX3y1rS.js",
+    "file": "assets/Portfolio-C4GrSU_x.js",
     "name": "Portfolio",
     "src": "resources/js/pages/Portfolio.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
-      "resources/js/main.jsx"
+      "_ContactSection-BvST-n1T.js",
+      "resources/js/main.jsx",
+      "_ProjectsGrid-duo4WvdQ.js"
     ]
   },
   "resources/js/pages/Pricing.jsx": {
-    "file": "assets/Pricing-D6pmbNMw.js",
+    "file": "assets/Pricing-D1--Vjqp.js",
     "name": "Pricing",
     "src": "resources/js/pages/Pricing.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_Reveal-CUJEEjKy.js",
       "resources/js/main.jsx"
     ]
   },
   "resources/js/pages/ProjectDetail.jsx": {
-    "file": "assets/ProjectDetail-B_kGnVgg.js",
+    "file": "assets/ProjectDetail-B9NqaJBO.js",
     "name": "ProjectDetail",
     "src": "resources/js/pages/ProjectDetail.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
-      "resources/js/main.jsx"
+      "_ContactSection-BvST-n1T.js",
+      "resources/js/main.jsx",
+      "_ProjectsGrid-duo4WvdQ.js"
     ]
   },
   "resources/js/pages/ServiceDetail.jsx": {
-    "file": "assets/ServiceDetail-Bzf6cMgk.js",
+    "file": "assets/ServiceDetail-D15nm82r.js",
     "name": "ServiceDetail",
     "src": "resources/js/pages/ServiceDetail.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_States-B2L9Djto.js",
       "resources/js/main.jsx",
       "resources/js/pages/NotFound.jsx"
     ]
   },
   "resources/js/pages/Services.jsx": {
-    "file": "assets/Services--I8uG2p3.js",
+    "file": "assets/Services-C3q_UU4N.js",
     "name": "Services",
     "src": "resources/js/pages/Services.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_States-B2L9Djto.js",
       "resources/js/main.jsx"
     ]
   },
   "resources/js/pages/Team.jsx": {
-    "file": "assets/Team-DK1mxM0o.js",
+    "file": "assets/Team-FPX-M60B.js",
     "name": "Team",
     "src": "resources/js/pages/Team.jsx",
     "isDynamicEntry": true,
     "imports": [
       "_Button-C2_JiPzU.js",
-      "_ContactSection-DcsmkawI.js",
+      "_ContactSection-BvST-n1T.js",
       "_States-B2L9Djto.js",
       "_Reveal-CUJEEjKy.js",
       "resources/js/main.jsx",
-      "_Reasons-B8qRLAoV.js"
+      "_Reasons-mz4Pj8EY.js"
     ]
   }
 }

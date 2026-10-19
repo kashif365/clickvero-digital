@@ -1,8 +1,9 @@
-import { ChevronDown, Mail, Menu, Phone, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowRight, ChevronDown, Mail, Menu, Phone, X } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useScrolled } from '../../lib/hooks';
-import { serviceIcon, useSite } from '../../lib/site';
+import { serviceMenu } from '../../content/site';
+import { useSite } from '../../lib/site';
 import Button from '../ui/Button';
 import Logo from '../ui/Logo';
 
@@ -13,6 +14,36 @@ const COMPANY_LINKS = [
     { to: '/blog', label: 'Blog', text: 'Insights on SEO and growth' },
     { to: '/contact', label: 'Contact', text: 'Start a conversation with us' },
 ];
+
+/**
+ * Resolves the mega menu config against the published services: unpublished
+ * items are hidden, empty groups and columns are dropped, and any published
+ * service the config doesn't mention is listed under "More Services".
+ */
+function buildServiceMenu(services) {
+    const published = new Set(services.map((service) => service.slug));
+    const listed = new Set(serviceMenu.flat().flatMap((group) => group.items.map((item) => item.slug)));
+
+    const columns = serviceMenu
+        .map((column) =>
+            column
+                .map((group) => ({ ...group, items: group.items.filter((item) => published.has(item.slug)) }))
+                .filter((group) => group.items.length > 0),
+        )
+        .filter((column) => column.length > 0);
+
+    const extra = services.filter((service) => !listed.has(service.slug)).map((service) => ({ label: service.name, slug: service.slug }));
+
+    if (extra.length > 0) {
+        if (columns.length === 0) {
+            columns.push([]);
+        }
+
+        columns[columns.length - 1].push({ title: 'More Services', items: extra });
+    }
+
+    return columns;
+}
 
 const NAV_ITEM = 'group relative flex h-full items-center gap-1 text-lg font-medium text-white transition-colors hover:text-gray-200';
 
@@ -37,10 +68,14 @@ function NavItem({ to, children }) {
     );
 }
 
-/** Desktop dropdown: opens on hover, focus, or click, and closes on Escape or navigation. */
-function Dropdown({ id, label, open, onOpen, onClose, active, panelClassName, children }) {
+/**
+ * Desktop dropdown: opens on hover, focus, or click, and closes on Escape or
+ * navigation. A `mega` panel is centred under the whole header instead of the
+ * trigger, so a wide menu never runs off the edge of the screen.
+ */
+function Dropdown({ id, label, open, onOpen, onClose, active, mega = false, panelClassName, children }) {
     return (
-        <div className="relative h-full" onMouseEnter={() => onOpen(id)} onMouseLeave={onClose}>
+        <div className={`h-full ${mega ? '' : 'relative'}`} onMouseEnter={() => onOpen(id)} onMouseLeave={onClose}>
             <button
                 type="button"
                 className={NAV_ITEM}
@@ -54,9 +89,9 @@ function Dropdown({ id, label, open, onOpen, onClose, active, panelClassName, ch
             </button>
             <div
                 id={`nav-${id}`}
-                className={`absolute left-1/2 top-full -translate-x-1/2 pt-2 transition-all duration-200 ${open ? 'visible opacity-100' : 'invisible -translate-y-1 opacity-0'}`}
+                className={`absolute top-full pt-2 transition-all duration-200 ${mega ? 'inset-x-0 flex justify-center px-4' : 'left-1/2 -translate-x-1/2'} ${open ? 'visible opacity-100' : 'invisible -translate-y-1 opacity-0'}`}
             >
-                <div className={`rounded-2xl border bg-card p-3 shadow-[0_24px_60px_rgba(0,0,0,0.6)] ${panelClassName}`}>{children}</div>
+                <div className={`rounded-2xl border bg-card shadow-[0_24px_60px_rgba(0,0,0,0.6)] ${mega ? '' : 'p-3'} ${panelClassName}`}>{children}</div>
             </div>
         </div>
     );
@@ -118,6 +153,7 @@ export default function Header() {
         };
     }, [mobileOpen]);
 
+    const serviceColumns = useMemo(() => buildServiceMenu(site.services), [site.services]);
     const solid = scrolled || mobileOpen;
     const servicesActive = location.pathname.startsWith('/service');
     const companyActive = COMPANY_LINKS.some((link) => location.pathname.startsWith(link.to));
@@ -140,29 +176,49 @@ export default function Header() {
                             onOpen={setOpenMenu}
                             onClose={() => setOpenMenu(null)}
                             active={servicesActive}
-                            panelClassName="w-[680px]"
+                            mega
+                            panelClassName="w-full max-w-[880px]"
                         >
-                            {site.services.length > 0 ? (
-                                <div className="grid grid-cols-2 gap-1">
-                                    {site.services.map((service) => (
-                                        <MenuLink
-                                            key={service.slug}
-                                            to={`/services/${service.slug}`}
-                                            icon={serviceIcon(service.slug)}
-                                            label={service.name}
-                                            text={service.short_description}
-                                        />
+                            {serviceColumns.length > 0 ? (
+                                <div
+                                    className="grid divide-x divide-white/10"
+                                    style={{ gridTemplateColumns: `repeat(${serviceColumns.length}, minmax(0, 1fr))` }}
+                                >
+                                    {serviceColumns.map((column, index) => (
+                                        // eslint-disable-next-line react/no-array-index-key
+                                        <div key={index} className="space-y-8 px-7 py-7">
+                                            {column.map((group) => (
+                                                <div key={group.title}>
+                                                    <p className="mb-3 font-semibold text-brand">{group.title}</p>
+                                                    <ul className="space-y-2.5">
+                                                        {group.items.map((item) => (
+                                                            <li key={item.slug}>
+                                                                <Link
+                                                                    to={`/services/${item.slug}`}
+                                                                    className="inline-block text-[15px] leading-snug text-white/75 transition-colors hover:text-white"
+                                                                >
+                                                                    {item.label}
+                                                                </Link>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            ))}
+                                            {index === serviceColumns.length - 1 && (
+                                                <Link
+                                                    to="/service"
+                                                    className="group/all inline-flex items-center gap-1.5 font-semibold text-brand hover:text-brand-soft"
+                                                >
+                                                    View All Services
+                                                    <ArrowRight className="size-4 transition-transform group-hover/all:translate-x-1" aria-hidden="true" />
+                                                </Link>
+                                            )}
+                                        </div>
                                     ))}
                                 </div>
                             ) : (
-                                <p className="p-3 text-sm text-muted-foreground">Services will appear here once they are published.</p>
+                                <p className="p-6 text-sm text-muted-foreground">Services will appear here once they are published.</p>
                             )}
-                            <Link
-                                to="/service"
-                                className="mt-2 block rounded-xl border-t px-3 pt-4 pb-2 text-sm font-semibold text-brand hover:text-brand-soft"
-                            >
-                                View all services →
-                            </Link>
                         </Dropdown>
 
                         <NavItem to="/project">Portfolio</NavItem>
@@ -193,7 +249,7 @@ export default function Header() {
                                 {contact.label}
                             </a>
                         )}
-                        <div className="hidden sm:block">
+                        <div className="hidden sm:block lg:hidden xl:block">
                             <Button to="/contact" className="!py-2.5 !text-base">
                                 Schedule a Call
                             </Button>
@@ -225,13 +281,18 @@ export default function Header() {
                         open={mobileSection === 'services'}
                         onToggle={() => setMobileSection(mobileSection === 'services' ? null : 'services')}
                     >
-                        {site.services.map((service) => (
-                            <MobileLink key={service.slug} to={`/services/${service.slug}`} nested>
-                                {service.name}
-                            </MobileLink>
+                        {serviceColumns.flat().map((group) => (
+                            <div key={group.title}>
+                                <p className="pb-1 pl-4 pt-5 text-sm font-semibold uppercase tracking-widest text-brand">{group.title}</p>
+                                {group.items.map((item) => (
+                                    <MobileLink key={item.slug} to={`/services/${item.slug}`} nested>
+                                        {item.label}
+                                    </MobileLink>
+                                ))}
+                            </div>
                         ))}
                         <MobileLink to="/service" nested>
-                            All services
+                            View All Services
                         </MobileLink>
                     </MobileGroup>
 

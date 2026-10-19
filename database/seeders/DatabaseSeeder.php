@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             PageMetaSeeder::class,
             BlogSeeder::class,
             ServiceSeeder::class,
+            GrowthServiceSeeder::class,
+            ServicePageContentSeeder::class,
         ]);
 
         // Placeholder people (testimonials, team) are for local UI review only.

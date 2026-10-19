@@ -21,7 +21,7 @@
                         <tr>
                             <td>{{ $quote->name }}</td>
                             <td>{{ $quote->email }}</td>
-                            <td>{{ $quote->phone }}</td>
+                            <td style="white-space:nowrap;">{{ $quote->phone ?: '—' }}</td>
                             <td>{{ $quote->subject ?: '—' }}</td>
                             <td>{{ $quote->created_at->format('d M, Y H:i') }}</td>
                             <td style="white-space:nowrap;">
@@ -34,7 +34,7 @@
                             </td>
                         </tr>
                     @empty
-                        <tr><td colspan="5">No quote requests yet.</td></tr>
+                        <tr><td colspan="6">No quote requests yet.</td></tr>
                     @endforelse
                 </tbody>
             </table>

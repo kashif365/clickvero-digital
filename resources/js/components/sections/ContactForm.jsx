@@ -6,6 +6,30 @@ import Button from '../ui/Button';
 
 const EMPTY = { name: '', email: '', phone: '', subject: '', message: '' };
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// 10-digit US (NANP) number: area code and exchange can't start with 0 or 1. Mirrors StoreQuoteRequest.
+const US_PHONE_PATTERN = /^[2-9]\d{2}[2-9]\d{6}$/;
+
+/** Up to ten digits, dropping a leading US country code ("1") when pasted as +1 555 234 5678. */
+function phoneDigits(value) {
+    const digits = value.replace(/\D/g, '');
+
+    return (digits.length > 10 && digits.startsWith('1') ? digits.slice(1) : digits).slice(0, 10);
+}
+
+/** Formats digits progressively as the visitor types: 555 → (555) → (555) 234 → (555) 234-5678. */
+function formatUsPhone(value) {
+    const digits = phoneDigits(value);
+
+    if (digits.length < 4) {
+        return digits;
+    }
+
+    if (digits.length < 7) {
+        return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    }
+
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
 
 const FIELD =
     'w-full rounded-lg border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 transition-[border-color,box-shadow] focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25 aria-[invalid=true]:border-red-400';
@@ -23,8 +47,11 @@ function validate(values) {
     } else if (!EMAIL_PATTERN.test(values.email.trim())) {
         errors.email = 'Please enter a valid email address.';
     }
-    if (!values.phone.trim()){
-        errors.phone = 'Please enter your phone number'
+
+    if (!values.phone.trim()) {
+        errors.phone = 'Please enter your phone number.';
+    } else if (!US_PHONE_PATTERN.test(phoneDigits(values.phone))) {
+        errors.phone = 'Please enter a valid 10-digit US phone number.';
     }
 
     if (!values.message.trim()) {
@@ -65,14 +92,14 @@ export default function ContactForm({ defaultSubject = '', submitLabel = 'Send M
 
     const id = (name) => `${uid}-${name}`;
 
-    const bind = (name) => ({
+    const bind = (name, format = (value) => value) => ({
         id: id(name),
         name,
         value: values[name],
         'aria-invalid': Boolean(errors[name]),
         'aria-describedby': errors[name] ? `${id(name)}-error` : undefined,
         onChange: (event) => {
-            setValues((current) => ({ ...current, [name]: event.target.value }));
+            setValues((current) => ({ ...current, [name]: format(event.target.value) }));
             setErrors((current) => ({ ...current, [name]: undefined }));
         },
     });
@@ -96,7 +123,7 @@ export default function ContactForm({ defaultSubject = '', submitLabel = 'Send M
             const response = await api.createQuote({
                 name: values.name.trim(),
                 email: values.email.trim(),
-                phone: values.phone.trim(),
+                phone: phoneDigits(values.phone),
                 subject: values.subject || null,
                 message: values.message.trim(),
             });
@@ -120,26 +147,36 @@ export default function ContactForm({ defaultSubject = '', submitLabel = 'Send M
                 <Field id={id('email')} label="Your Email" error={errors.email} required>
                     <input type="email" autoComplete="email" maxLength={255} placeholder="jane@company.com" className={FIELD} {...bind('email')} />
                 </Field>
-                <Field id={id('phone')} label="Phone Number" error={errors.phone} required>
-                    <input type="tel" placeholder="(123) 456-7890" className={FIELD} {...bind('phone')} />
-
-                </Field>
             </div>
 
-            <Field id={id('subject')} label="Service" error={errors.subject}>
-                <div className="relative">
-                <select className={`${FIELD} appearance-none pr-11`} {...bind('subject')}>
-                    <option value="">Select a service</option>
-                    {services.map((service) => (
-                        <option key={service.slug} value={service.name}>
-                            {service.name}
-                        </option>
-                    ))}
-                    <option value="Other">Something else</option>
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" />
-                </div>
-            </Field>
+            <div className="grid gap-5 sm:grid-cols-2">
+                <Field id={id('phone')} label="Phone Number (US)" error={errors.phone} required>
+                    <input
+                        type="tel"
+                        inputMode="numeric"
+                        autoComplete="tel-national"
+                        maxLength={14}
+                        placeholder="(555) 234-5678"
+                        className={FIELD}
+                        {...bind('phone', formatUsPhone)}
+                    />
+                </Field>
+
+                <Field id={id('subject')} label="Service" error={errors.subject}>
+                    <div className="relative">
+                        <select className={`${FIELD} appearance-none pr-11`} {...bind('subject')}>
+                            <option value="">Select a service</option>
+                            {services.map((service) => (
+                                <option key={service.slug} value={service.name}>
+                                    {service.name}
+                                </option>
+                            ))}
+                            <option value="Other">Something else</option>
+                        </select>
+                        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-brand" aria-hidden="true" />
+                    </div>
+                </Field>
+            </div>
 
             <Field id={id('message')} label="Project Details" error={errors.message} required>
                 <textarea rows={5} maxLength={5000} placeholder="Tell us about your goals, timeline, and budget." className={FIELD} {...bind('message')} />

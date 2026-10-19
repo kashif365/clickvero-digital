@@ -156,25 +156,61 @@ class FrontendApiTest extends TestCase
         $this->postJson('/api/v1/quotes', [
             'name' => 'Jane Doe',
             'email' => 'jane@example.com',
+            'phone' => '5552345678',
             'subject' => 'SEO Services',
             'message' => 'We need help with organic growth.',
         ])->assertCreated()->assertJsonStructure(['message', 'data' => ['id']]);
 
-        $this->assertDatabaseHas('quotes', ['email' => 'jane@example.com', 'subject' => 'SEO Services']);
+        $this->assertDatabaseHas('quotes', ['email' => 'jane@example.com', 'phone' => '(555) 234-5678', 'subject' => 'SEO Services']);
+    }
+
+    public function test_quote_phone_accepts_common_us_formats_and_is_stored_formatted(): void
+    {
+        foreach (['(555) 234-5678', '555.234.5678', '+1 555 234 5678', '1-555-234-5678'] as $phone) {
+            $this->postJson('/api/v1/quotes', ['name' => 'Jane', 'email' => 'jane@example.com', 'phone' => $phone, 'message' => 'Hello'])
+                ->assertCreated();
+        }
+
+        $this->assertSame(['(555) 234-5678'], Quote::pluck('phone')->unique()->values()->all());
+    }
+
+    public function test_quote_phone_must_be_a_valid_us_number(): void
+    {
+        $this->withoutMiddleware(\Illuminate\Routing\Middleware\ThrottleRequests::class);
+
+        foreach (['', 'not a phone', '555-2345', '(155) 234-5678', '(555) 134-5678', '55523456789', str_repeat('5', 40), ['5552345678']] as $phone) {
+            $this->postJson('/api/v1/quotes', ['name' => 'Jane', 'email' => 'jane@example.com', 'phone' => $phone, 'message' => 'Hello'])
+                ->assertUnprocessable()
+                ->assertJsonValidationErrors(['phone']);
+        }
+
+        $this->assertSame(0, Quote::count());
+    }
+
+    public function test_contact_form_post_route_is_rate_limited(): void
+    {
+        $payload = ['name' => 'Jane', 'email' => 'jane@example.com', 'phone' => '5552345678', 'message' => 'Hello'];
+
+        foreach (range(1, 6) as $i) {
+            $this->post('/contact', $payload)->assertRedirect();
+        }
+
+        $this->post('/contact', $payload)->assertTooManyRequests();
+        $this->assertSame(6, Quote::count());
     }
 
     public function test_quote_submission_is_validated_server_side(): void
     {
         $this->postJson('/api/v1/quotes', ['name' => '', 'email' => 'not-an-email', 'message' => ''])
             ->assertUnprocessable()
-            ->assertJsonValidationErrors(['name', 'email', 'message']);
+            ->assertJsonValidationErrors(['name', 'email', 'phone', 'message']);
 
         $this->assertSame(0, Quote::count());
     }
 
     public function test_quote_submissions_are_rate_limited(): void
     {
-        $payload = ['name' => 'Jane', 'email' => 'jane@example.com', 'message' => 'Hello'];
+        $payload = ['name' => 'Jane', 'email' => 'jane@example.com', 'phone' => '5552345678', 'message' => 'Hello'];
 
         foreach (range(1, 6) as $i) {
             $this->postJson('/api/v1/quotes', $payload)->assertCreated();

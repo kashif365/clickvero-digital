@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ContactSection from '../components/sections/ContactSection';
 import FaqSection from '../components/sections/FaqSection';
@@ -11,12 +11,36 @@ import { useAsync } from '../lib/hooks';
 import { serviceIcon, useSite } from '../lib/site';
 import NotFound from './NotFound';
 
+/**
+ * Flags paragraphs that contain nothing but a single link so CSS can render
+ * them as call-to-action buttons. CSS alone can't tell a lone link from one
+ * inside a sentence, and the sanitizer strips any class authors could add.
+ */
+function markCtaParagraphs(html) {
+    if (!html || typeof DOMParser === 'undefined') {
+        return html;
+    }
+
+    const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
+
+    doc.querySelectorAll('p').forEach((paragraph) => {
+        const links = paragraph.querySelectorAll('a');
+
+        if (links.length === 1 && paragraph.textContent.trim() === links[0].textContent.trim()) {
+            paragraph.classList.add('cta');
+        }
+    });
+
+    return doc.body.firstElementChild.innerHTML;
+}
+
 export default function ServiceDetail() {
     const { slug } = useParams();
     const site = useSite();
     const [attempt, setAttempt] = useState(0);
     const { data, error, loading } = useAsync((signal) => api.service(slug, signal), [slug, attempt]);
     const service = data?.data;
+    const description = useMemo(() => markCtaParagraphs(service?.description), [service?.description]);
 
     if (error?.status === 404) {
         return <NotFound />;
@@ -29,7 +53,7 @@ export default function ServiceDetail() {
             <PageHero
                 image={service?.banner_image || images.campaign}
                 eyebrow="Our Services"
-                title={service?.name ?? site.services.find((item) => item.slug === slug)?.name ?? 'Service'}
+                title={service?.headline || service?.name || site.services.find((item) => item.slug === slug)?.name || 'Service'}
                 text={service?.short_description}
                 breadcrumbs={[{ label: 'Services', to: '/service' }, { label: service?.name ?? '…' }]}
                 cta={{ to: '/contact', label: 'Get a free consultation' }}
@@ -52,7 +76,7 @@ export default function ServiceDetail() {
                             </div>
                         ) : service.description ? (
                             // Sanitized server-side (HTMLPurifier) before it is stored.
-                            <div className="rich-content" dangerouslySetInnerHTML={{ __html: service.description }} />
+                            <div className="rich-content service-content" dangerouslySetInnerHTML={{ __html: description }} />
                         ) : (
                             <p className="leading-relaxed text-muted-foreground">{service.short_description}</p>
                         )}

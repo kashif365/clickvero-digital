@@ -32,6 +32,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Phone No</th>
                         <th>Subject</th>
                         <th>Received</th>
                     </tr>
@@ -41,12 +42,13 @@
                         <tr>
                             <td>{{ $quote->name }}</td>
                             <td>{{ $quote->email }}</td>
+                            <td style="white-space:nowrap;">{{ $quote->phone ?: '—' }}</td>
                             <td>{{ $quote->subject ?: '—' }}</td>
                             <td>{{ $quote->created_at->diffForHumans() }}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">No quote requests yet.</td>
+                            <td colspan="5">No quote requests yet.</td>
                         </tr>
                     @endforelse
                 </tbody>

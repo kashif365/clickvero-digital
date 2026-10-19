@@ -9,7 +9,7 @@ use Mews\Purifier\Facades\Purifier;
 class Service extends Model
 {
     protected $fillable = [
-        'name', 'slug', 'short_description', 'description', 'banner_image', 'faqs',
+        'name', 'headline', 'slug', 'short_description', 'description', 'banner_image', 'faqs',
         'seo_title', 'seo_description', 'keywords', 'status', 'sort_order',
     ];
 

@@ -41,7 +41,7 @@ Route::redirect('/service-details', '/service', 301);
 Route::view('/team', 'spa')->name('team');
 Route::view('/team-details', 'spa')->name('team-details');
 
-Route::post('/contact', [QuoteController::class, 'store'])->name('quote.store');
+Route::post('/contact', [QuoteController::class, 'store'])->middleware('throttle:6,1')->name('quote.store');
 
 Route::get('/robots.txt', function () {
     if (Storage::disk('public')->exists('robots-upload.txt')) {

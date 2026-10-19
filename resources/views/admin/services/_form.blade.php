@@ -7,6 +7,13 @@
 </div>
 
 <div class="admin-form-group">
+    <label for="headline">Page Headline (H1)</label>
+    <input type="text" id="headline" name="headline" class="admin-form-control" maxlength="255"
+           value="{{ old('headline', $service->headline ?? '') }}" placeholder="e.g. SEO Services Company That Turns Search Traffic Into Sales">
+    <small class="text-muted">The main heading on the service page. Leave empty to use the service name.</small>
+</div>
+
+<div class="admin-form-group">
     <label for="slug">URL Slug</label>
     <input type="text" id="slug" name="slug" class="admin-form-control"
            value="{{ old('slug', $service->slug ?? '') }}" placeholder="auto-generated-from-name">

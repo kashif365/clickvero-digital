@@ -656,6 +656,7 @@ export const serviceCatalog = [
     {
         key: 'ecommerce-marketing',
         icon: 'ShoppingCart',
+        slug: 'ecommerce-marketing',
         name: 'eCommerce Marketing',
         tagline: 'Shopify marketing agency & ecommerce agency',
         paragraphs: [
@@ -668,6 +669,7 @@ export const serviceCatalog = [
     {
         key: 'growth',
         icon: 'Rocket',
+        slug: 'growth-marketing',
         name: 'Growth Marketing',
         tagline: 'Acquisition, conversion, retention, and optimization',
         paragraphs: [
@@ -701,6 +703,7 @@ export const serviceCatalog = [
     {
         key: 'web-building',
         icon: 'LayoutTemplate',
+        slug: 'web-development',
         name: 'Website Building Services',
         tagline: 'Sleek, fast, and scalable online platforms',
         paragraphs: [
@@ -713,6 +716,7 @@ export const serviceCatalog = [
     {
         key: 'shopify-seo',
         icon: 'Store',
+        slug: 'shopify-seo',
         name: 'Shopify SEO',
         tagline: 'Shopify SEO agency services',
         paragraphs: [
@@ -726,6 +730,7 @@ export const serviceCatalog = [
     {
         key: 'ecommerce-development',
         icon: 'ShoppingBag',
+        slug: 'ecommerce-web-development',
         name: 'Ecommerce Web Development',
         tagline: 'Online stores built with growth in mind',
         paragraphs: [
@@ -739,6 +744,7 @@ export const serviceCatalog = [
     {
         key: 'web-apps',
         icon: 'AppWindow',
+        slug: 'web-app-development',
         name: 'Web App Development',
         tagline: 'Web app development agency',
         paragraphs: [
@@ -748,4 +754,50 @@ export const serviceCatalog = [
         items: ['Custom Web Applications', 'SaaS Platforms', 'CRM Systems', 'Customer Portals', 'Business Automation Solutions', 'Enterprise Applications'],
         outro: 'Our applications are driven by efficiency and growth, using innovative technologies and user-focused design.',
     },
+];
+
+/**
+ * Services mega menu: columns of groups, each linking to admin-managed service
+ * pages by slug. Items whose service isn't published are hidden, and published
+ * services not listed here are added under "More Services" automatically.
+ */
+export const serviceMenu = [
+    [
+        {
+            title: 'Digital Marketing',
+            items: [
+                { label: 'Search Engine Optimization', slug: 'seo-services' },
+                { label: 'Local SEO Services', slug: 'local-seo-services' },
+                { label: 'Search Engine Marketing', slug: 'search-engine-marketing-services' },
+                { label: 'Pay-Per-Click Advertising', slug: 'pay-per-click-advertising' },
+                { label: 'Social Media Marketing', slug: 'social-media-marketing' },
+                { label: 'Content Marketing', slug: 'content-marketing' },
+                { label: 'Email Marketing', slug: 'email-marketing' },
+            ],
+        },
+    ],
+    [
+        {
+            title: 'Web Development',
+            items: [
+                { label: 'Website Design & Development', slug: 'web-development' },
+                { label: 'E-Commerce Web Development', slug: 'ecommerce-web-development' },
+                { label: 'Web Application Development', slug: 'web-app-development' },
+            ],
+        },
+        {
+            title: 'Branding',
+            items: [{ label: 'Brand Identity & Strategy', slug: 'branding' }],
+        },
+    ],
+    [
+        {
+            title: 'eCommerce & Growth',
+            items: [
+                { label: 'eCommerce Marketing', slug: 'ecommerce-marketing' },
+                { label: 'Shopify SEO', slug: 'shopify-seo' },
+                { label: 'Growth Marketing', slug: 'growth-marketing' },
+            ],
+        },
+    ],
 ];

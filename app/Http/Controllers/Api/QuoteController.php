@@ -10,7 +10,7 @@ class QuoteController extends Controller
 {
     public function store(StoreQuoteRequest $request)
     {
-        $quote = Quote::create($request->validated());
+        $quote = Quote::create($request->quoteData());
 
         return response()->json([
             'message' => 'Thanks! Your message has been sent — we\'ll be in touch shortly.',

@@ -12,6 +12,7 @@ class ServiceResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'headline' => $this->headline,
             'slug' => $this->slug,
             'short_description' => $this->short_description,
             'banner_image' => $this->banner_image,

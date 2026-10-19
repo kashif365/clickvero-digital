@@ -3,6 +3,7 @@ import {
     Code2,
     Mail,
     Megaphone,
+    MapPin,
     MousePointerClick,
     Palette,
     PenLine,
@@ -19,6 +20,8 @@ const SiteContext = createContext(window.__APP__?.site ?? fallbackSite);
 export const useSite = () => useContext(SiteContext);
 
 const SERVICE_ICONS = [
+    [/local-seo/, MapPin],
+    [/search-engine-marketing/, MousePointerClick],
     [/seo|search/, Search],
     [/social/, Share2],
     [/ppc|pay-per-click|ads|advertis/, MousePointerClick],
