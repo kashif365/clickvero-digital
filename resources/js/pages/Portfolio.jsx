@@ -15,7 +15,7 @@ export default function Portfolio() {
                 eyebrow="Our work"
                 title="A Portfolio Built With"
                 accent="Purpose and Performance"
-                text="Websites, online stores, brand identities, and mobile apps we've designed and built for businesses across the USA — each one made to look sharp and drive results."
+                text="Websites, online stores, brand identities, social media designs, Google Ads campaigns, and mobile apps we've delivered for businesses across the USA — each one made to look sharp and drive results."
                 breadcrumbs={[{ label: 'Portfolio' }]}
                 cta={{ to: '/contact', label: 'Start Your Project' }}
             />

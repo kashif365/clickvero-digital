@@ -4,8 +4,11 @@ import ContactSection from '../components/sections/ContactSection';
 import FaqSection from '../components/sections/FaqSection';
 import PageHero from '../components/sections/PageHero';
 import ServiceMarquee from '../components/sections/ServiceMarquee';
+import WorkGallery from '../components/sections/WorkGallery';
+import SectionHeading from '../components/ui/SectionHeading';
 import { ErrorState, Skeleton } from '../components/ui/States';
 import { images } from '../content/site';
+import { serviceWork } from '../content/work';
 import { api } from '../lib/api';
 import { useAsync } from '../lib/hooks';
 import { serviceIcon, useSite } from '../lib/site';
@@ -47,6 +50,7 @@ export default function ServiceDetail() {
     }
 
     const others = site.services.filter((item) => item.slug !== slug);
+    const portfolio = serviceWork[slug];
 
     return (
         <>
@@ -60,6 +64,15 @@ export default function ServiceDetail() {
             />
 
             <ServiceMarquee />
+
+            {portfolio && (
+                <section className="pb-4 pt-12 md:pb-8 md:pt-20">
+                    <div className="container-site">
+                        <SectionHeading title={portfolio.title} accent={portfolio.accent} text={portfolio.text} />
+                        <WorkGallery key={slug} categories={portfolio.categories} moreTo="/project" />
+                    </div>
+                </section>
+            )}
 
             <section className="py-12 md:py-20">
                 <div className="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">

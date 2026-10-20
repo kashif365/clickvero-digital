@@ -141,7 +141,7 @@ export default function Home() {
                     <SectionHeading
                         title="Our Recent"
                         accent="Work"
-                        text="Websites, online stores, brand identities, and mobile apps we've built for growing businesses. Open any project to see the full design."
+                        text="Websites, online stores, brand identities, social media designs, and Google Ads campaigns we've delivered for growing businesses. Open any project to see it in full."
                     />
                     <WorkGallery pageSize={6} moreTo="/project" />
                 </div>
