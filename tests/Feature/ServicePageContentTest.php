@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Service;
 use Database\Seeders\ServicePageContentSeeder;
+use Database\Seeders\WebDevelopmentContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -46,5 +47,26 @@ class ServicePageContentTest extends TestCase
         $this->assertStringContainsString('<ol>', $html);
         $this->assertStringContainsString('<a href="/contact">', $html);
         $this->assertStringNotContainsString('Digital Marketings World', $html);
+    }
+
+    public function test_web_development_pages_update_existing_services_without_duplicates(): void
+    {
+        Service::create(['name' => 'Web Development', 'slug' => 'web-development', 'sort_order' => 4]);
+        Service::create(['name' => 'E-Commerce Web Development', 'slug' => 'ecommerce-web-development', 'sort_order' => 12]);
+        Service::create(['name' => 'Web Application Development', 'slug' => 'web-app-development', 'sort_order' => 13]);
+
+        $this->seed(WebDevelopmentContentSeeder::class);
+
+        $this->assertSame(5, Service::count());
+        $this->assertSame(4, Service::where('slug', 'web-development')->value('sort_order'));
+        $this->assertSame(
+            'Web Application Development Services That Turn Your Ideas Into Business Growth',
+            Service::where('slug', 'web-app-development')->value('headline'),
+        );
+
+        $html = $this->getJson('/api/v1/services/business-website-development')->assertOk()->json('data.description');
+        $this->assertStringContainsString('<a href="/services/custom-website-development-services">', $html);
+        $this->assertStringNotContainsString('Digital Marketings World', $html);
+        $this->assertStringNotContainsString('digitalmarketingshub', $html);
     }
 }

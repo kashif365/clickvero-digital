@@ -33,7 +33,7 @@ class ServicePageContentSeeder extends Seeder
         }
     }
 
-    private function pages(): array
+    protected function pages(): array
     {
         return [
             $this->seo(),

@@ -781,6 +781,8 @@ export const serviceMenu = [
             title: 'Web Development',
             items: [
                 { label: 'Website Design & Development', slug: 'web-development' },
+                { label: 'Custom Website Development', slug: 'custom-website-development-services' },
+                { label: 'Business Website Development', slug: 'business-website-development' },
                 { label: 'E-Commerce Web Development', slug: 'ecommerce-web-development' },
                 { label: 'Web Application Development', slug: 'web-app-development' },
             ],

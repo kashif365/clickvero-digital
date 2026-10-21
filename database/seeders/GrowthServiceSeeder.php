@@ -8,7 +8,8 @@ use Illuminate\Database\Seeder;
 /**
  * Services added for the grouped Services mega menu. Unlike ServiceSeeder this
  * only creates missing services, so it is safe to run against a live database
- * without overwriting anything edited in the admin panel:
+ * without overwriting anything edited in the admin panel. (E-Commerce Web
+ * Development and Web Application Development moved to WebDevelopmentContentSeeder.)
  *
  *     php artisan db:seed --class=GrowthServiceSeeder
  */
@@ -126,64 +127,6 @@ class GrowthServiceSeeder extends Seeder
                 'faqs' => [
                     ['question' => 'How is growth marketing different from traditional marketing?', 'answer' => 'Traditional marketing often focuses on a single campaign or channel. Growth marketing covers the whole customer journey and improves it continuously through testing and data.'],
                     ['question' => 'How long does digital marketing take to produce results?', 'answer' => 'The timeframe varies by channel, market, competition, budget, website condition, and starting point. Paid campaigns can generate traffic quickly, while SEO and content strategies generally require consistent optimization and time.'],
-                ],
-            ],
-            [
-                'slug' => 'ecommerce-web-development',
-                'name' => 'E-Commerce Web Development',
-                'short_description' => 'Scalable online stores that enhance user experience and conversions, built with growth in mind.',
-                'seo_title' => 'Ecommerce Web Development Services | Custom Online Stores',
-                'seo_description' => 'Ecommerce web development for scalable online stores — custom store builds, secure payments, mobile commerce, inventory management, and analytics.',
-                'keywords' => 'ecommerce web development, ecommerce website development, custom online store, Shopify development, WooCommerce development',
-                'description' => <<<'HTML'
-                    <h2>Online Stores Built for Growth</h2>
-                    <p>Your eCommerce solution must be built with growth in mind. We offer ecommerce web development services for online stores that enhance user experience and conversions while staying scalable.</p>
-
-                    <h2>Ecommerce Development Features</h2>
-                    <ul>
-                        <li><strong>Custom store development</strong> — a storefront designed around your brand and products.</li>
-                        <li><strong>Product management systems</strong> — easy catalog, variant, and pricing management.</li>
-                        <li><strong>Secure payment integration</strong> — trusted gateways and a smooth checkout.</li>
-                        <li><strong>Mobile commerce optimization</strong> — fast, thumb-friendly shopping on every device.</li>
-                        <li><strong>Inventory management</strong> — stock levels that stay accurate across channels.</li>
-                        <li><strong>Advanced analytics</strong> — tracking that shows what sells and why.</li>
-                    </ul>
-
-                    <h2>Why Choose Us</h2>
-                    <p>Our team builds solutions that help grow the business and customer satisfaction — and because we also run ecommerce marketing, every store is built with SEO and conversion in mind from day one.</p>
-                    HTML,
-                'faqs' => [
-                    ['question' => 'Which ecommerce platforms do you build on?', 'answer' => 'We build on Shopify, WooCommerce, and custom stacks, and recommend a platform based on your catalog, budget, and growth plans.'],
-                    ['question' => 'Can you migrate my existing store?', 'answer' => 'Yes. We migrate products, customers, and order history, and set up redirects to protect your search rankings.'],
-                ],
-            ],
-            [
-                'slug' => 'web-app-development',
-                'name' => 'Web Application Development',
-                'short_description' => 'Custom web applications, SaaS platforms, CRMs, and portals designed and built to scale.',
-                'seo_title' => 'Web App Development Agency | Custom Web Applications',
-                'seo_description' => 'Our web app development agency designs and builds scalable custom web applications, SaaS platforms, CRM systems, customer portals, and automation tools.',
-                'keywords' => 'web app development, web application development, web app development agency, SaaS development, custom CRM, customer portal',
-                'description' => <<<'HTML'
-                    <h2>Custom Web Applications That Scale</h2>
-                    <p>Need a custom-built web application? Our web app development agency designs and builds scalable web apps, so you can rest assured that you are getting the best we have to offer.</p>
-
-                    <h2>Web Application Services</h2>
-                    <ul>
-                        <li><strong>Custom web applications</strong> — tools built around how your business actually works.</li>
-                        <li><strong>SaaS platforms</strong> — multi-tenant products ready for paying customers.</li>
-                        <li><strong>CRM systems</strong> — manage leads, clients, and pipelines in one place.</li>
-                        <li><strong>Customer portals</strong> — secure self-service for your customers.</li>
-                        <li><strong>Business automation solutions</strong> — replace manual, repetitive work.</li>
-                        <li><strong>Enterprise applications</strong> — robust systems that integrate with your stack.</li>
-                    </ul>
-
-                    <h2>Our Approach</h2>
-                    <p>Our applications are driven by efficiency and growth, using innovative technologies and user-focused design. We plan, design, build, and support each application with clear milestones and regular demos.</p>
-                    HTML,
-                'faqs' => [
-                    ['question' => 'What technologies do you use?', 'answer' => 'We typically build with Laravel, React, and modern cloud infrastructure, choosing the stack that best fits your requirements.'],
-                    ['question' => 'Do you provide support after launch?', 'answer' => 'Yes. We offer ongoing maintenance, monitoring, and feature development after your application goes live.'],
                 ],
             ],
         ];

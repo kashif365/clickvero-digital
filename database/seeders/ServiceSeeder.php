@@ -6,8 +6,9 @@ use App\Models\Service;
 use Illuminate\Database\Seeder;
 
 /**
- * Core service pages. The SEO and Social Media Marketing pages (plus Local SEO
- * and Search Engine Marketing) live in ServicePageContentSeeder.
+ * Core service pages. The SEO, Local SEO, Search Engine Marketing, and Social
+ * Media Marketing pages live in ServicePageContentSeeder; the website and web app
+ * development pages live in WebDevelopmentContentSeeder.
  */
 class ServiceSeeder extends Seeder
 {
@@ -74,58 +75,6 @@ class ServiceSeeder extends Seeder
                     ['question' => 'How quickly will I see results from PPC?', 'answer' => "PPC can drive traffic within days of launch, though campaigns typically need 2 to 4 weeks of data before they're fully optimized."],
                     ['question' => 'Which platforms do you manage PPC on?', 'answer' => 'We manage campaigns on Google Ads, Bing Ads, and paid social platforms including Facebook, Instagram, and LinkedIn Ads.'],
                     ['question' => 'Do you require long-term contracts?', 'answer' => "We recommend at least a 3-month commitment to allow campaigns to reach full optimization, but we don't lock clients into long-term contracts."],
-                ],
-            ],
-            [
-                'slug' => 'web-development',
-                'name' => 'Web Development',
-                'short_description' => 'Fast, conversion-focused websites built to turn visitors into customers — designed, developed, and optimized for growth.',
-                'seo_title' => 'Web Development Services | Custom Websites That Convert',
-                'seo_description' => 'Our web development services deliver fast, responsive, SEO-ready websites built to convert visitors into customers, with ongoing support included.',
-                'keywords' => 'web development services, website design, custom websites, responsive web design, website development agency',
-                'description' => <<<'HTML'
-                    <h2>Your Website Is Your Most Important Marketing Asset</h2>
-                    <p>Every marketing channel eventually sends traffic to your website — which means a slow, confusing, or outdated site quietly undermines every other investment you make. We build websites engineered specifically for conversions, speed, and long-term scalability.</p>
-
-                    <h2>Benefits of Professional Web Development</h2>
-                    <ul>
-                        <li><strong>Higher conversion rates</strong> — clear user journeys turn more visitors into leads and customers.</li>
-                        <li><strong>Better SEO performance</strong> — fast, well-structured sites rank better in search engines.</li>
-                        <li><strong>Improved credibility</strong> — a polished site builds instant trust with new visitors.</li>
-                        <li><strong>Long-term scalability</strong> — a solid technical foundation grows with your business.</li>
-                    </ul>
-
-                    <h2>What's Included</h2>
-                    <h3>Custom Design</h3>
-                    <p>A design system built around your brand, not a generic template.</p>
-                    <h3>Responsive Development</h3>
-                    <p>Fully responsive builds tested across desktop, tablet, and mobile devices.</p>
-                    <h3>SEO-Ready Foundation</h3>
-                    <p>Clean code, fast load times, and proper technical structure from day one.</p>
-                    <h3>Ongoing Support</h3>
-                    <p>Post-launch support for updates, fixes, and performance monitoring.</p>
-
-                    <h2>Our Process</h2>
-                    <h3>1. Discovery</h3>
-                    <p>We learn your business goals, target audience, and the actions you want visitors to take.</p>
-                    <h3>2. Design</h3>
-                    <p>Wireframes and visual design focused on clarity and conversion.</p>
-                    <h3>3. Development</h3>
-                    <p>Clean, performant development with careful attention to speed and accessibility.</p>
-                    <h3>4. Launch &amp; Support</h3>
-                    <p>A thorough QA process before launch, followed by ongoing support as your site grows.</p>
-
-                    <h2>Why Choose Us</h2>
-                    <p>We build websites as marketing assets first and design objects second — every decision is made with conversions and search performance in mind.</p>
-
-                    <h2>Industry Use Cases</h2>
-                    <p>We build websites for service businesses, eCommerce stores, SaaS products, and content-driven brands that need a site that performs as hard as it looks.</p>
-                    HTML,
-                'faqs' => [
-                    ['question' => 'How long does a website project take?', 'answer' => 'Most projects take 4 to 8 weeks depending on scope, from discovery through launch.'],
-                    ['question' => 'Will my website be mobile-friendly?', 'answer' => 'Yes, every site we build is fully responsive and tested across desktop, tablet, and mobile devices.'],
-                    ['question' => 'Do you offer website maintenance after launch?', 'answer' => 'Yes, we offer ongoing support plans covering updates, monitoring, and fixes after your site goes live.'],
-                    ['question' => 'Will my new website be optimized for SEO?', 'answer' => 'Yes, every website we build starts with a clean, fast, SEO-ready technical foundation.'],
                 ],
             ],
             [

@@ -198,6 +198,18 @@ export const serviceWork = {
         accent: "We've Built",
         text: 'Business websites and online stores designed to look sharp, load fast, and convert visitors. Open any project to scroll the full page.',
     },
+    'custom-website-development-services': {
+        categories: ['websites', 'ecommerce'],
+        title: 'Custom Websites',
+        accent: "We've Built",
+        text: 'Bespoke business websites and online stores designed around each client’s goals. Open any project to scroll the full page.',
+    },
+    'business-website-development': {
+        categories: ['websites'],
+        title: 'Business Websites',
+        accent: "We've Built",
+        text: 'Professional websites for service businesses, practices, and growing brands. Open any project to scroll the full page.',
+    },
     'ecommerce-web-development': {
         categories: ['ecommerce'],
         title: 'E-Commerce Stores',
