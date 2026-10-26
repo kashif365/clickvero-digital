@@ -189,7 +189,10 @@ export default function WorkGallery({ pageSize = 12, moreTo, categories }) {
     const [shown, setShown] = useState(pageSize);
     const [open, setOpen] = useState(null);
 
-    const pool = categories ? work.filter((item) => categories.includes(item.category)) : work;
+    // On a service page, list work in the order its categories are given (main category first).
+    const pool = categories
+        ? categories.flatMap((category) => work.filter((item) => item.category === category))
+        : work;
     const tabs = categories ? TABS.filter((item) => item.key === 'all' || categories.includes(item.key)) : TABS;
     const items = tab === 'all' ? pool : pool.filter((item) => item.category === tab);
     const visible = items.slice(0, shown);

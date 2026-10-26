@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\PageMeta;
 use App\Models\Service;
+use Database\Seeders\MarketingContentSeeder;
 use Database\Seeders\ServicePageContentSeeder;
 use Database\Seeders\WebDevelopmentContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -68,5 +70,24 @@ class ServicePageContentTest extends TestCase
         $this->assertStringContainsString('<a href="/services/custom-website-development-services">', $html);
         $this->assertStringNotContainsString('Digital Marketings World', $html);
         $this->assertStringNotContainsString('digitalmarketingshub', $html);
+    }
+
+    public function test_marketing_pages_update_existing_services_and_home_meta(): void
+    {
+        foreach (['pay-per-click-advertising', 'ecommerce-marketing', 'shopify-seo', 'growth-marketing'] as $order => $slug) {
+            Service::create(['name' => $slug, 'slug' => $slug, 'sort_order' => $order + 1]);
+        }
+        PageMeta::create(['route' => 'home', 'title' => 'Old title', 'description' => 'Old description']);
+
+        $this->seed(MarketingContentSeeder::class);
+
+        $this->assertSame(5, Service::count());
+        $this->assertSame(1, Service::where('slug', 'pay-per-click-advertising')->value('sort_order'));
+        $this->assertSame('PPC Advertising Company That Turns Clicks Into Customers', Service::where('slug', 'pay-per-click-advertising')->value('headline'));
+        $this->assertSame('Digital Marketing Services to Grow Your Business Fast', PageMeta::where('route', 'home')->value('title'));
+
+        $html = $this->getJson('/api/v1/services/creative-graphic-design-services')->assertOk()->json('data.description');
+        $this->assertStringContainsString('<a href="/services/branding">', $html);
+        $this->assertStringNotContainsString('Digital Marketings', $html);
     }
 }

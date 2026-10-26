@@ -6,9 +6,11 @@ use App\Models\Service;
 use Illuminate\Database\Seeder;
 
 /**
- * Core service pages. The SEO, Local SEO, Search Engine Marketing, and Social
- * Media Marketing pages live in ServicePageContentSeeder; the website and web app
- * development pages live in WebDevelopmentContentSeeder.
+ * Core service pages. Full-content pages live in dedicated seeders:
+ * ServicePageContentSeeder (SEO, Local SEO, SEM, Social Media),
+ * WebDevelopmentContentSeeder (website and web app development), and
+ * MarketingContentSeeder (Graphic Design, PPC, eCommerce Marketing, Shopify SEO,
+ * Growth Marketing).
  */
 class ServiceSeeder extends Seeder
 {
@@ -25,58 +27,6 @@ class ServiceSeeder extends Seeder
     private function services(): array
     {
         return [
-            [
-                'slug' => 'pay-per-click-advertising',
-                'name' => 'Pay-Per-Click (PPC) Advertising',
-                'short_description' => 'Get in front of ready-to-buy customers instantly with expertly managed PPC campaigns across Google, Bing, and social platforms.',
-                'seo_title' => 'PPC Advertising Services | Paid Search & Social Ads',
-                'seo_description' => 'Our PPC advertising services deliver measurable ROI through Google Ads, Bing Ads, and paid social campaigns managed by certified specialists.',
-                'keywords' => 'PPC advertising, pay per click, Google Ads, paid search, paid social, PPC management, digital marketing agency',
-                'description' => <<<'HTML'
-                    <h2>Instant Visibility, Measurable Results</h2>
-                    <p>Pay-per-click advertising puts your business in front of customers the moment they're searching for what you offer. Unlike SEO, PPC delivers immediate traffic, giving you a fast, controllable, and highly measurable channel for growth.</p>
-
-                    <h2>Benefits of PPC Advertising</h2>
-                    <ul>
-                        <li><strong>Immediate results</strong> — start driving qualified traffic from day one.</li>
-                        <li><strong>Full budget control</strong> — you decide exactly how much to spend and where.</li>
-                        <li><strong>Precise targeting</strong> — reach customers by keyword, location, device, and intent.</li>
-                        <li><strong>Transparent ROI</strong> — every click and conversion is tracked and reported.</li>
-                    </ul>
-
-                    <h2>What's Included</h2>
-                    <h3>Campaign Strategy</h3>
-                    <p>Keyword research, competitor analysis, and budget planning built around your target cost per acquisition.</p>
-                    <h3>Ad Creation &amp; Copywriting</h3>
-                    <p>Compelling ad copy and creative designed to maximize click-through and conversion rates.</p>
-                    <h3>Landing Page Guidance</h3>
-                    <p>Recommendations to align landing pages with ad intent for higher Quality Scores and conversion rates.</p>
-                    <h3>Bid &amp; Budget Management</h3>
-                    <p>Ongoing bid adjustments and budget reallocation toward what's actually converting.</p>
-
-                    <h2>Our Process</h2>
-                    <h3>1. Discovery &amp; Goal Setting</h3>
-                    <p>We define target cost per acquisition, budget, and priority campaigns.</p>
-                    <h3>2. Campaign Build</h3>
-                    <p>Account structure, keyword targeting, ad copy, and tracking are set up and quality-checked before launch.</p>
-                    <h3>3. Launch &amp; Monitor</h3>
-                    <p>Campaigns go live with close monitoring during the initial learning phase.</p>
-                    <h3>4. Optimize &amp; Scale</h3>
-                    <p>We continuously test ad variations and reallocate budget toward top-performing campaigns.</p>
-
-                    <h2>Why Choose Us</h2>
-                    <p>We manage PPC as a performance channel, not a "set and forget" line item. Every campaign is actively optimized against real business metrics — leads and revenue, not just clicks.</p>
-
-                    <h2>Industry Use Cases</h2>
-                    <p>Our PPC management supports eCommerce stores driving direct sales, B2B companies generating qualified leads, and local businesses filling appointment calendars.</p>
-                    HTML,
-                'faqs' => [
-                    ['question' => 'How much should I budget for PPC advertising?', 'answer' => 'Budgets vary widely by industry and competition. We help determine a realistic starting budget during onboarding based on your goals and target cost per acquisition.'],
-                    ['question' => 'How quickly will I see results from PPC?', 'answer' => "PPC can drive traffic within days of launch, though campaigns typically need 2 to 4 weeks of data before they're fully optimized."],
-                    ['question' => 'Which platforms do you manage PPC on?', 'answer' => 'We manage campaigns on Google Ads, Bing Ads, and paid social platforms including Facebook, Instagram, and LinkedIn Ads.'],
-                    ['question' => 'Do you require long-term contracts?', 'answer' => "We recommend at least a 3-month commitment to allow campaigns to reach full optimization, but we don't lock clients into long-term contracts."],
-                ],
-            ],
             [
                 'slug' => 'content-marketing',
                 'name' => 'Content Marketing',

@@ -11,8 +11,8 @@ class PageMetaSeeder extends Seeder
     {
         $pages = [
             'home' => [
-                'title' => 'Clickvora Digital | Digital Marketing Agency for Growing Brands',
-                'description' => 'Clickvora Digital helps brands grow online with SEO, PPC, social media marketing, content marketing, branding, and web development — serving clients worldwide.',
+                'title' => 'Digital Marketing Services to Grow Your Business Fast',
+                'description' => 'Turn clicks into customers with professional Digital Marketing Services. Get smarter SEO, paid advertising and marketing strategies built to grow your business.',
             ],
             'about' => [
                 'title' => 'About Us | Clickvora Digital',

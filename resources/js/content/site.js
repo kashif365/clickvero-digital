@@ -467,7 +467,7 @@ export const home = {
         paragraphs: [
             'With so many businesses having websites these days, companies need more than just a website. They need a results-oriented digital marketing agency that can provide visibility, qualified leads, and sales.',
             'From startups and local businesses to eCommerce stores and established companies, our team designs and executes a marketing plan specific to your business — across SEO, PPC advertising, social media, content marketing, website building, and conversion-focused campaigns — to boost your online visibility and maximize your return on investment (ROI).',
-            "We don't rely on intuition. We believe in measurable growth, data-driven decisions, and marketing tactics that deliver real business outcomes.",
+            "We don't rely on intuition. We believe in measurable growth, data-driven decisions, and marketing tactics that deliver real business outcomes. Partner with a digital marketing agency known for driving more traffic, leads, and revenue.",
         ],
     },
     goals: {
@@ -789,7 +789,10 @@ export const serviceMenu = [
         },
         {
             title: 'Branding',
-            items: [{ label: 'Brand Identity & Strategy', slug: 'branding' }],
+            items: [
+                { label: 'Brand Identity & Strategy', slug: 'branding' },
+                { label: 'Graphic Design', slug: 'creative-graphic-design-services' },
+            ],
         },
     ],
     [

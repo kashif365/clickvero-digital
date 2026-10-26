@@ -180,6 +180,12 @@ export const serviceWork = {
         accent: 'Designs',
         text: 'Scroll-stopping social media posts and ad creatives we design for brands across healthcare, real estate, retail, and more.',
     },
+    'creative-graphic-design-services': {
+        categories: ['graphics', 'logos'],
+        title: 'Graphic Design',
+        accent: 'Portfolio',
+        text: 'Social media creatives, ad designs, and brand identities we have designed for businesses across industries.',
+    },
     'content-marketing': {
         categories: ['graphics'],
         title: 'Content &',
